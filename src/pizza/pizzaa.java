@@ -116,6 +116,11 @@ PreparedStatement pstl;
 
         lblsmall.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblsmall.setText("Small");
+        lblsmall.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lblsmallActionPerformed(evt);
+            }
+        });
 
         lblmed.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblmed.setText("Medium");
@@ -339,7 +344,7 @@ PreparedStatement pstl;
     }//GEN-LAST:event_txtbalActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-          
+           
         if(lblsmall.isSelected()== true)
        {
          item="small"; 
@@ -464,12 +469,12 @@ model.removeRow(jTable1.getSelectedRow());
     
     // Loop through table rows to get each item, price, quantity, and total
     for (int a = 0; a < jTable1.getRowCount(); a++) {
-        String item = jTable1.getValueAt(a, 0).toString(); // Assuming item name is in column 0
-        String price = jTable1.getValueAt(a, 1).toString(); // Assuming price is in column 1
-        String qty = jTable1.getValueAt(a, 2).toString();   // Assuming quantity is in column 2
-        String total = jTable1.getValueAt(a, 3).toString(); // Assuming total is in column 3
+        String item = jTable1.getValueAt(a, 0).toString(); 
+        String price = jTable1.getValueAt(a, 1).toString();
+        String qty = jTable1.getValueAt(a, 2).toString();
+        String total = jTable1.getValueAt(a, 3).toString(); 
         
-        bill.append("Item: " + item + "\n");
+        bill.append("Pizza size: " + item + "\n");
         bill.append("Price: " + price + "\n");
         bill.append("Quantity: " + qty + "\n");
         bill.append("Total: " + total + "\n");
@@ -479,7 +484,7 @@ model.removeRow(jTable1.getSelectedRow());
  
     bill.append("Thank you for your order!\n");
 
-    // Set the bill text in the text area (assuming textarea is named 'textAreaBill')
+ 
     textareabill.setText(bill.toString());
 
         
@@ -487,68 +492,50 @@ model.removeRow(jTable1.getSelectedRow());
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 
-        // Clear the receipt text area
+    
         textareabill.setText("");
 
-        // Reset the radio buttons for pizza size
+       
         lblsmall.setSelected(false);
         lblmed.setSelected(false);
         lbllarge.setSelected(false);
         lblexlarge.setSelected(false);
 
-        // Reset the table (clear all rows)
+        
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0); // Clear all rows
 
-        // Reset the total, payment, and balance fields
+        
         txttotal.setText("");
         txtpay.setText("");
         txtbal.setText("");
 
-        // Reset the quantity spinner
+       
         txtqty.setValue(0);
 
        
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
 this.dispose(); 
     
-    // Open the Login form
+   
     signup loginPage = new signup(); 
     loginPage.setVisible(true);       // TODO add your handling code here:
     }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void lblsmallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblsmallActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblsmallActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(pizzaa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(pizzaa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(pizzaa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(pizzaa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        
+    
 
-        /* Create and display the form */
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new pizzaa().setVisible(true);
